@@ -143,9 +143,6 @@ def main():
                 ps = torch.exp(logps)
                 equality = (labels.data == ps.max(dim=1)[1])
                 validation_accuracy += equality.type(torch.FloatTensor).mean()
-                #_, p = torch.max(logps.data, 1)
-                #validation_total += labels.size(0)
-                #validation_accuracy += (p == labels).sum().item()
                 
                 count += 1
             print(f"Validation for Epoch {epoch + 1}/{epochs}")
