@@ -113,6 +113,7 @@ def main():
             running_loss += loss.item()
         
             if steps % print_every == 0:
+                model.eval()
                 accuracy = 0
                 # Calculate accuracy
                 #_, p = torch.max(logps.data, 1)
@@ -124,7 +125,7 @@ def main():
                 accuracy += equality.type(torch.FloatTensor).mean()
                 
                 print(f"Epoch {epoch+1}/{epochs}.. "
-                    f"Training loss: {running_loss/steps:.3f}.. ")
+                    f"Training loss: {running_loss/print_every:.3f}.. ")
                 running_loss = 0
                 model.train()
     
